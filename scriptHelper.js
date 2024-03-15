@@ -18,10 +18,35 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function validateInput(testInput) {
-    
- }
+    if (testInput === '') {
+        return "Empty"
+    };
+    if (!isNaN(testInput)) {
+        return "Is a Number"
+    };
+    if (isNaN(testInput)){
+        return "Not a Number"
+    };
+
+ };
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let input = document.querySelectorAll('input');
+       
+    for (let i = 0; i < input.length; i++) {
+        if (validateInput(input.value[i]) === 'Empty'){
+            alert('All Fields are Required')
+        }
+    }
+    if ((validateInput(pilot.value)) || (validateInput(copilot.value)) === 'Is a Number') {
+        alert('Please enter a name')
+    } else {
+        document.getElementById("pilotStatus").innerHTML += pilot;
+        document.getElementById("copilotStatus").innerHTML += copilot;
+    } 
+
+  
+    
     
  }
  
